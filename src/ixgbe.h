@@ -94,7 +94,7 @@
 
 #define IXGBE_DEFAULT_RXD		512
 #define IXGBE_DEFAULT_RX_WORK		256
-#define IXGBE_MAX_RXD			4096
+#define IXGBE_MAX_RXD			32768
 #define IXGBE_MIN_RXD			64
 
 
