@@ -65,10 +65,12 @@
 #include <linux/mdio.h>
 #endif
 
+#if 0
 #if defined(CONFIG_FCOE) || defined(CONFIG_FCOE_MODULE)
 #define IXGBE_FCOE
 #include "ixgbe_fcoe.h"
 #endif /* CONFIG_FCOE or CONFIG_FCOE_MODULE */
+#endif
 
 #include "ixgbe_api.h"
 
