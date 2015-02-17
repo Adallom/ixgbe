@@ -1,0 +1,10 @@
+*.o
+*.swp
+*.cmd
+*.deb
+*.ko
+modules.order
+src/.tmp*
+src/Module.symvers
+src/ixgbe.7.gz
+src/ixgbe.mod.c

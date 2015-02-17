@@ -1,0 +1,2 @@
+#!/bin/bash
+uname -r | grep BOOT || /sbin/depmod -a > /dev/null 2>&1 || true
