@@ -15,7 +15,7 @@ make -C src clean
 make -C src
 
 make -C src INSTALL_MOD_PATH=$TEMPDIR  install
-install -D -m 644 modprobe-options-ixgbe.conf $TEMPDIR/etc/modprobe.d/ixgbe.conf
+install -D -m 644 modprobe-options-ixgbe.conf $TEMPDIR/etc/modprobe.d/adallom-ixgbe.conf
 
 fpm -t deb -s dir --name "$NAME" \
     -v "$VERSION" \
@@ -29,8 +29,10 @@ fpm -t deb -s dir --name "$NAME" \
     --description "$DESCRIPTION" \
     --deb-field "Original-Maintainer: Intel Corporation" \
     --deb-field "Original-Homepage: $URL" \
-    --after-install "DEBIAN/refresh_depmod" \
-    --after-remove "DEBIAN/refresh_depmod" \
+    --before-install "DEBIAN/before_install" \
+    --after-install "DEBIAN/after_install" \
+    --before-remove "DEBIAN/before_remove" \
+    --after-remove "DEBIAN/after_remove" \
      .
 
 echo "Removing $TEMPDIR"

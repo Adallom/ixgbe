@@ -347,7 +347,8 @@ install: default $(MANFILE).gz
 	# remove all old versions of the driver
 	find $(INSTALL_MOD_PATH)/lib/modules/$(KVER) -name $(TARGET) -exec rm -f {} \; || true
 	find $(INSTALL_MOD_PATH)/lib/modules/$(KVER) -name $(TARGET).gz -exec rm -f {} \; || true
-	install -D -m 644 $(TARGET) $(INSTALL_MOD_PATH)$(INSTDIR)/$(TARGET)
+	# ADALLOM: changed so '.adallom' is appended to the driver's name in the package (in order not to clash with the official driver's package)
+	install -D -m 644 $(TARGET) $(INSTALL_MOD_PATH)$(INSTDIR)/$(TARGET).adallom
 ifeq (,$(INSTALL_MOD_PATH))
 	/sbin/depmod -a || true
 else

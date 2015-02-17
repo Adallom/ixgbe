@@ -1,0 +1,6 @@
+#!/bin/bash
+DRIVER="/lib/modules/$(uname -r)/kernel/drivers/net/ethernet/intel/ixgbe/ixgbe.ko"
+if [ -f "$DRIVER.official" ]; then
+	mv "$DRIVER.official" "$DRIVER"
+	echo "Restored original driver to $DRIVER"
+fi
