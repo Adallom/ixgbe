@@ -3,7 +3,7 @@ EXPECTED_KERNEL_VERSION="3.13.0-24-generic"
 DRIVER="/lib/modules/$(uname -r)/kernel/drivers/net/ethernet/intel/ixgbe/ixgbe.ko"
 
 if [ "$(uname -r)" != "$EXPECTED_KERNEL_VERSION" ]; then
-	echo "This package only works on kernel $EXPECTED_KERNEL_VERSION"
+	echo -e "\nERROR!!! THIS PACKAGE ONLY WORKS ON KERNEL $EXPECTED_KERNEL_VERSION\n"
 	exit 1
 fi
 if [ -f "$DRIVER" ]; then
