@@ -1,2 +1,13 @@
 #!/bin/bash
+DRIVER="/lib/modules/$(uname -r)/kernel/drivers/net/ethernet/intel/ixgbe/ixgbe.ko"
+if [ ! -f "$DRIVER.official" ]; then  # ensure the official driver is present
+	echo "Can't find official driver in $DRIVER.official"
+	exit 1
+fi
+if [ -f "$DRIVER" ]; then # ensure no driver exists
+	echo "Driver already installed?!"
+	exit 1
+fi
+echo "Setting up Adallom ixgbe driver instead of official"
+ln -f "$DRIVER.adallom" "$DRIVER"
 uname -r | grep BOOT || /sbin/depmod -a > /dev/null 2>&1 || true

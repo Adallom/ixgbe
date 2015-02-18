@@ -1,11 +1,10 @@
 #!/bin/bash
 DRIVER="/lib/modules/$(uname -r)/kernel/drivers/net/ethernet/intel/ixgbe/ixgbe.ko"
+
 if [ -f "$DRIVER" ]; then
 	# if the adallom driver is not installed then backup the official driver
 	if [ ! -f "$DRIVER.official" ]; then 
 		mv "$DRIVER" "$DRIVER.official"
 		echo "Backed up original driver to $DRIVER.official"
 	fi
-	ln -f "$DRIVER.adallom" "$DRIVER"
 fi
-
